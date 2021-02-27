@@ -40,9 +40,11 @@ histo = [0] * nb_intersection
 for e in ff:
     histo[Streets_start_end[e][1]] += 1
 
-print(D)
-print(Streets_start_end)
-print(histo)
+# print("D : ", D)
+# print("Streets_start_end : ", Streets_start_end)
+# print("histo : ", histo)
+
+
 # On calcul le nbr de noeud concernés
 nb_noeud = 0
 for i in histo:
@@ -53,7 +55,7 @@ f = open("result_a.txt", "w")
 f.write(str(nb_noeud) + '\n')
 
 # On écris dans le fichier et on met le temps à 1sec pour chaque feu (méthode naive)
-"""
+
 for i in range(len(histo)):
     if histo[i] != 0:
         f.write(str(i) + '\n')
@@ -62,19 +64,19 @@ for i in range(len(histo)):
             if Streets_start_end[e][1] == i:
                 f.write(str(e) + ' ' + str(1) + '\n')
 f.close()
-"""
-for i in range(len(histo)):
-    if histo[i] != 0:
-        f.write(str(i) + '\n')
-        f.write(str(histo[i]) + '\n')
-        list_street = []
-        for e in ff:
-            if Streets_start_end[e][1] == i:
-                list_street.append(e)
-        print(list_street)
-        mini = D[list_street[0]]
-        for j in list_street:
-            mini = min(mini, D[j])
-        print(mini)
-        f.write(str(e) + ' ' + str(1) + '\n')
-f.close()
+
+
+
+# for i in range(len(histo)):
+#     if histo[i] != 0:
+#         f.write(str(i) + '\n')
+#         f.write(str(histo[i]) + '\n')
+#         R = []
+#         for e in ff:
+#             if Streets_start_end[e][1] == i:
+#                 R.append((e, D[e]))
+#         R.sort(key=lambda tup: tup[1])
+#         for i in range(len(R)):
+#             time = R[i][1] // R[0][1]
+#             f.write(str(R[i][0]) + ' ' + str(time) + '\n')                
+# f.close()
