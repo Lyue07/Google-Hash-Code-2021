@@ -4,13 +4,13 @@
 # RESTES Célia
 
 filein = "a.txt"
-fileout =  
+fileout = "result_a.txt"
 file = open(filein, "r")
 first_line = file.readline()
 first_split = first_line.split()
 
 #simulation_time = int(first_split[0])
-nb_intersection =int(first_split[1])
+nb_intersection = int(first_split[1])
 nb_streets = int(first_split[2])
 nb_cars = int(first_split[3])
 #nb_points = int(first_split[4])
@@ -53,18 +53,18 @@ f.write(str(nb_noeud) + '\n')
 if fileout == "result_f.txt":
     # Dans ce cas la on fait on allume en fonction du nombre de voiture qui va passer dans la rue plus une rue est empruntée plus elle est au vert longtemps
     for i in range(len(histo)):
-    if histo[i] != 0:
-        f.write(str(i) + '\n')
-        f.write(str(histo[i]) + '\n')
-        R = []
-        for e in ff:
-            if Streets_start_end[e][1] == i:
-                R.append((e, D[e]))
-        R.sort(key=lambda tup: tup[1])
-        for i in range(len(R)):
-            time = R[i][1] // R[0][1]
-            f.write(str(R[i][0]) + ' ' + str(time) + '\n')
-else :
+        if histo[i] != 0:
+            f.write(str(i) + '\n')
+            f.write(str(histo[i]) + '\n')
+            R = []
+            for e in ff:
+                if Streets_start_end[e][1] == i:
+                    R.append((e, D[e]))
+            R.sort(key=lambda tup: tup[1])
+            for i in range(len(R)):
+                time = R[i][1] // R[0][1]
+                f.write(str(R[i][0]) + ' ' + str(time) + '\n')
+else:
     # On écris dans le fichier et on met le temps à 1sec pour chaque feu (méthode naive)
     for i in range(len(histo)):
         if histo[i] != 0:
@@ -75,6 +75,3 @@ else :
                     f.write(str(e) + ' ' + str(1) + '\n')
 
 f.close()
-
-
-
